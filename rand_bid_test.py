@@ -3,13 +3,8 @@ import numpy as np
 
 def rand_bidding_test(train_file_dict, test_file_dict, budget, distribution):
     """
-
-    :param camp_id:
-    :param train_file_dict:
-    :param test_file_dict:
-    :param budget_scaling:
-    :param distribution:
-    :return:
+    This function takes a specific iPinYou-campaign and evaluates the
+    performance of a bidding algorithm using random bidding.
     """
     click = list(test_file_dict['data']['click'])
     winning_bids = list(test_file_dict['data']['winprice'])

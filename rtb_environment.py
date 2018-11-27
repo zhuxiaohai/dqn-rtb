@@ -26,10 +26,6 @@ class RTB_environment:
         """
         self.camp_dict = camp_dict
         self.data_count = camp_dict['imp']
-        # self.ctr_estimation_data = np.array(camp_dict['data']['pctr'])
-        # self.winning_bid_data = np.array(camp_dict['data']['winprice'])
-        # self.click_data = list(camp_dict['data']['click'])
-        # camp_dict = None
 
         self.result_dict = {'auctions':0, 'impressions':0, 'click':0, 'cost':0, 'win-rate':0, 'eCPC':0, 'eCPI':0}
 
@@ -76,10 +72,6 @@ class RTB_environment:
                 self.camp_dict['data'].iloc[self.data_count - self.step_length:self.data_count, :]['winprice'])
             clicks = list(
                 self.camp_dict['data'].iloc[self.data_count - self.step_length:self.data_count, :]['click'])
-
-            # self.ctr_estimation_data = self.ctr_estimation_data[self.step_length:]
-            # self.winning_bid_data = self.winning_bid_data[self.step_length:]
-            # self.click_data = self.click_data[self.step_length:]
 
             self.data_count -= self.step_length
             return ctr_estimations, winning_bids, clicks
@@ -134,16 +126,6 @@ class RTB_environment:
 
         return self.state, reward, self.termination
 
-    # def reward_function(self, ctr, clicks):
-    #     """
-    #     Should try to create a reward function which weighs ctr and clicks,
-    #     i.e. such that both are valued in some way??? Or just weigh with
-    #     w = 1 for both, such that a click is like ctr = 1 + ctr_est.
-    #     """
-    #     return self.winning_value + 1 / self.eCPC
-    ###CONSIDER CASE WHERE eCPC = 0 BCZ NO CLICKS WON!
-
-
     def step(self, action_index):
         """
         This function takes an action from the bidding agent (i.e.
@@ -193,9 +175,9 @@ class RTB_environment:
 
         self.state = [self.budget / self.init_budget, self.n_regulations,
                       self.budget_consumption_rate,
-                      self.winning_rate, self.ctr_value] ###CONSIDER THIS!
+                      self.winning_rate, self.ctr_value]
 
-        reward = self.ctr_value ###CONSIDER THIS!
+        reward = self.ctr_value
 
         return self.state, reward, self.termination
 

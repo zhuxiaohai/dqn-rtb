@@ -5,8 +5,6 @@ def lin_bidding_test(train_file_dict, test_file_dict, budget, type_of_average):
     """
     This function takes a specific iPinYou-campaign and evaluates the
     performance of a linear bidding algorithm.
-    :param camp_id:
-    :return:
     """
     click = list(test_file_dict['data']['click'])
     winning_bids = list(test_file_dict['data']['winprice'])
