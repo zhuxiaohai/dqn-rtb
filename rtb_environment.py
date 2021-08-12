@@ -210,14 +210,14 @@ def get_data(camp_n):
     if type(camp_n) != str:
         train_file_dict = {}
         test_file_dict = {}
-        data_path = os.path.join(os.getcwd(), 'data/ipinyou-data')
+        data_path = os.path.join(os.getcwd(), 'iPinYou_data')
 
         for camp in camp_n:
-            test_data = pd.read_csv(data_path + '/' + camp + '/' + 'test.theta.txt',
+            test_data = pd.read_csv(data_path + '/' + 'test.theta_{}.txt'.format(camp),
                                      header=None, index_col=False, sep=' ',names=['click', 'winprice', 'pctr'])
-            train_data = pd.read_csv(data_path + '/' + camp + '/' + 'train.theta.txt',
+            train_data = pd.read_csv(data_path + '/' + 'train.theta_{}.txt'.format(camp),
                                      header=None, index_col=False, sep=' ', names=['click', 'winprice', 'pctr'])
-            camp_info = pickle.load(open(data_path + '/' + camp + '/' + 'info.txt', "rb"))
+            camp_info = pickle.load(open(data_path + '/' + 'info_{}.txt'.format(camp), "rb"))
             test_budget = camp_info['cost_test']
             train_budget = camp_info['cost_train']
             test_imp = camp_info['imp_test']

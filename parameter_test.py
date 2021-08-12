@@ -8,7 +8,7 @@ from drlb_test import drlb_test
 from lin_bid_test import lin_bidding_test
 from rand_bid_test import rand_bidding_test
 
-#parameter_list = [camp_id, epsilon_decay_rate, budget_scaling, budget_init_variance, initial_Lambda]
+parameter_list = ['1458', 1/32, 0.0001, 0.0001, 50, 500, 0.0001, 1]
 
 def parameter_camp_test(parameter_list):
     """
@@ -92,3 +92,8 @@ def parameter_camp_test(parameter_list):
                    'lambda':camp_info[1], 'unimod':camp_info[2], 'action values':camp_info[3],
                    'lin_bid_result':lin_bid_result, 'rand_bid_result':rand_bid_result}
     return result_dict
+
+
+if __name__ == '__main__':
+    result_dict = parameter_camp_test(parameter_list)
+    print(result_dict)
